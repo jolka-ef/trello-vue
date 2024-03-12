@@ -1,54 +1,53 @@
-
 {
-    "name": "task-board",
-    "columns" : [
+  "name": "task-board",
+  "columns": [
+    {
+      "name": "todo",
+
+      "tasks": [
         {
-            "name" : "todo",
-            
-            "tasks" : [
-                {
-                    "id" : "f132c25b-02c1-44a5-83ff-d27bf75bbada",
-                    "name": "task #1",
-                    "description": ""
-                },
-                {
-                    "id" : "82a6086b-0b7d-4dd0-8e7c-44eaee1406c8",
-                    "name": "task #2",
-                    "description": ""
-                }
-            ]
+          "id": "f132c25b-02c1-44a5-83ff-d27bf75bbada",
+          "name": "task #1",
+          "description": ""
         },
         {
-            "name" : "in-progress",
-            
-            "tasks" : [
-                {
-                    "id" : "2d552684-2c1f-453e-91a2-843b0bcaff60",
-                    "name": "task #3",
-                    "description": ""
-                },
-                {
-                    "id" : "df09b972-c4c0-4eff-904d-478473b6530a",
-                    "name": "task #4",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "name" : "complete",
-            
-            "tasks" : [
-                {
-                    "id" : "6bf4429f-cbd2-477f-ad9d-7213bac1100b",
-                    "name": "task #5",
-                    "description": ""
-                },
-                {
-                    "id" : "5a5a2e4d-4bb4-4a3d-8b83-74af86da55a5",
-                    "name": "task #6",
-                    "description": ""
-                }
-            ]
+          "id": "82a6086b-0b7d-4dd0-8e7c-44eaee1406c8",
+          "name": "task #2",
+          "description": ""
         }
-    ]
+      ]
+    },
+    {
+      "name": "in-progress",
+
+      "tasks": [
+        {
+          "id": "2d552684-2c1f-453e-91a2-843b0bcaff60",
+          "name": "task #3",
+          "description": ""
+        },
+        {
+          "id": "df09b972-c4c0-4eff-904d-478473b6530a",
+          "name": "task #4",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "complete",
+
+      "tasks": [
+        {
+          "id": "6bf4429f-cbd2-477f-ad9d-7213bac1100b",
+          "name": "task #5",
+          "description": ""
+        },
+        {
+          "id": "5a5a2e4d-4bb4-4a3d-8b83-74af86da55a5",
+          "name": "task #6",
+          "description": ""
+        }
+      ]
+    }
+  ]
 }
