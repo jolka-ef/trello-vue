@@ -1,23 +1,23 @@
 <script setup>
-import { useBoardStore } from "~/stores/boardStore";
+import { useBoardStore } from '~/stores/boardStore';
 
 const boardStore = useBoardStore();
 const route = useRoute();
 const router = useRouter();
 
 const isModalOpen = computed(() => {
-  return route.name === "index-tasks-id";
+  return route.name === 'index-tasks-id';
 });
 
-const newColumnName = ref("");
+const newColumnName = ref('');
 
 function addColumn() {
   boardStore.addColumn(newColumnName.value);
-  newColumnName = "";
+  newColumnName = '';
 }
 
 function closeModal() {
-  router.push("/");
+  router.push('/');
 }
 </script>
 <template>

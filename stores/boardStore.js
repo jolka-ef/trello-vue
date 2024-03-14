@@ -1,10 +1,10 @@
-import { v4 as uuid } from "uuid";
-import { defineStore } from "pinia";
-import { useStorage } from "@vueuse/core";
-import boardData from "~/data/board.json";
+import { v4 as uuid } from 'uuid';
+import { defineStore } from 'pinia';
+import { useStorage } from '@vueuse/core';
+import boardData from '~/data/board.json';
 
-export const useBoardStore = defineStore("boardStore", () => {
-  const board = useStorage("board", boardData);
+export const useBoardStore = defineStore('boardStore', () => {
+  const board = useStorage('board', boardData);
 
   /**
    * Tasks
@@ -22,7 +22,7 @@ export const useBoardStore = defineStore("boardStore", () => {
     board.value.columns[columnIndex].tasks.push({
       id: uuid(),
       name: taskName,
-      description: "",
+      description: '',
     });
   }
 
@@ -36,6 +36,15 @@ export const useBoardStore = defineStore("boardStore", () => {
     }
   }
 
+  function moveTask({ fromColumnIndex, taskIndex, toColumnIndex }) {
+    const task = board.value.columns[fromColumnIndex].tasks.splice(
+      taskIndex,
+      1
+    )[0];
+
+    board.value.columns[toColumnIndex].tasks.push(task);
+  }
+
   /**
    * Columns
    */
@@ -45,6 +54,11 @@ export const useBoardStore = defineStore("boardStore", () => {
 
   function deleteColumn(columnIndex) {
     board.value.columns.splice(columnIndex, 1);
+  }
+
+  function moveColumn({ fromColumnIndex, toColumnIndex }) {
+    const column = board.value.columns.splice(fromColumnIndex, 1)[0];
+    board.value.columns.splice(toColumnIndex, 0, column);
   }
   return {
     /* State */
@@ -58,5 +72,7 @@ export const useBoardStore = defineStore("boardStore", () => {
     addTask,
     deleteColumn,
     deleteTask,
+    moveColumn,
+    moveTask,
   };
 });
