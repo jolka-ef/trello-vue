@@ -29,17 +29,17 @@ function deleteColumn(columnIndex) {
   boardStore.deleteColumn(columnIndex);
 }
 
-function dropItem(event, toColumnIndex) {
+function dropItem(event, { toColumnIndex, toTaskIndex }) {
   const fromColumnIndex = event.dataTransfer.getData('from-column-index');
-  console.log(fromColumnIndex);
   const type = event.dataTransfer.getData('type');
 
   if (type === 'task') {
     const fromTaskIndex = event.dataTransfer.getData('from-task-index');
     boardStore.moveTask({
       fromColumnIndex,
-      taskIndex: fromTaskIndex,
       toColumnIndex,
+      fromTaskIndex,
+      toTaskIndex,
     });
   } else if (type === 'column') {
     boardStore.moveColumn({
@@ -76,7 +76,7 @@ function pickUpColumn(event, fromColumnIndex) {
     @dragstart.self="pickUpColumn($event, columnIndex)"
     @dragenter.prevent
     @dragover.prevent
-    @drop.stop="dropItem($event, columnIndex)"
+    @drop.stop="dropItem($event, { toColumnIndex: columnIndex })"
   >
     <div class="column-header mb-5">
       <div>
@@ -108,6 +108,12 @@ function pickUpColumn(event, fromColumnIndex) {
             pickUpTheTask($event, {
               fromColumnIndex: columnIndex,
               fromTaskIndex: taskIndex,
+            })
+          "
+          @drop.stop="
+            dropItem($event, {
+              toColumnIndex: columnIndex,
+              toTaskIndex: taskIndex,
             })
           "
         >
